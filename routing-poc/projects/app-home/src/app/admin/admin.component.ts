@@ -16,7 +16,7 @@ export class AdminComponent implements OnInit {
 
     constructor(private router: Router, private userService: AdminService) {
         let splitArray = router.url.split('/');
-        if (splitArray[2] === 'cucu-detail') {
+        if (splitArray[2] === 'active') {
             this.isActiveUsers = true;
             this.isArchivedUsers = false;
         } else {
