@@ -1,0 +1,124 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1, 
+  "newProjectRoot": "projects",
+  "projects": {
+    "app-home": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/app-home",
+      "sourceRoot": "projects/app-home/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/app-home",
+            "index": "projects/app-home/src/index.html",
+            "main": "projects/app-home/src/main.ts",
+            "polyfills": "projects/app-home/src/polyfills.ts",
+            "tsConfig": "projects/app-home/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/app-home/src/favicon.ico",
+              "projects/app-home/src/assets"
+            ],
+            "styles": [
+              "projects/app-home/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/app-home/src/environments/environment.ts",
+                  "with": "projects/app-home/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "app-home:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app-home:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app-home:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/app-home/src/test.ts",
+            "polyfills": "projects/app-home/src/polyfills.ts",
+            "tsConfig": "projects/app-home/tsconfig.spec.json",
+            "karmaConfig": "projects/app-home/karma.conf.js",
+            "assets": [
+              "projects/app-home/src/favicon.ico",
+              "projects/app-home/src/assets"
+            ],
+            "styles": [
+              "projects/app-home/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/app-home/tsconfig.app.json",
+              "projects/app-home/tsconfig.spec.json",
+              "projects/app-home/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/app-home/e2e/protractor.conf.js",
+            "devServerTarget": "app-home:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "app-home:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "app-home"
+}
