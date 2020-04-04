@@ -1,5 +1,33 @@
-@import '../../assets/styles/colors.scss';
+@import "../../assets/styles/colors.scss";
 
+.align-end {
+    justify-content: flex-end;
+    display: flex;
+}
 .table {
-    background-color: $blue-light; 
+    background-color: $blue-light;
+}
+
+.full-width {
+    width: 100%;
+}
+.split-width {
+    width: 35%;
+}
+.split {
+    flex-wrap: nowrap;
+}
+.gutter {
+    // cursor: e-resize;
+    // height: 100%;
+    // background: grey;
+    cursor: col-resize;
+    background-color: #efd6d6;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='30'><path d='M2 0 v30 M5 0 v30 M8 0 v30' fill='none' stroke='black'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 4px;
+}
+.split-screen {
+    height: 360px;
 }

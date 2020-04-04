@@ -11,6 +11,8 @@ export class AdminComponent implements OnInit {
 
     isActiveUsers: boolean = true;
     isArchivedUsers: boolean = true;
+    isFullScreen: boolean = true;
+    isSplitScreen: boolean = false;
     userDataObject: any;
     userDataList: any = [];
 
@@ -46,4 +48,14 @@ export class AdminComponent implements OnInit {
             this.userDataList = this.userDataObject.data;
         });
     }
+
+    viewMode(value) {
+        if(value === 'fullScreen') {
+            this.isFullScreen = true;
+            this.isSplitScreen = false;            
+        } else {
+            this.isFullScreen = false;
+            this.isSplitScreen = true; 
+        }
+    }   
 }
