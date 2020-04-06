@@ -1,27 +1,51 @@
 # RoutingPoc
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0-next.4.
+# IE11 Support Document for Angular 9.
 
-## Development server
+1.	Need to download “Cumulative Security Update for Internet Explorer 11 for Windows 7 for x64-based 
+    Systems (KB3008923)   ”. 
+    Link# https://www.microsoft.com/en-us/download/confirmation.aspx?id=45154
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2.	Open up “\src\polyfills.ts” and uncomment the below 2 lines.
 
-## Code scaffolding
+    // import 'classlist.js';  // Run `npm install --save classlist.js`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
-## Build
+3.	Run the below to commands to install the above packages
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    npm install --save classlist.js
+    npm install --save web-animations-js
 
-## Running unit tests
+4.	Open up “browserslist” file.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    Modified line 
+    From  “not IE 9-11 # For IE 9-11 support, remove 'not'.”
+    TO “IE 9-11 # For IE 9-11 support, remove 'not'.
 
-## Running end-to-end tests
+5.	Go to IE11. Press “Alt” key. Navigate to “Tools -> Compatibility  View  Settings”
+    Uncheck option “Display intranet sites in Compatibility View”.
+    Close the window.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    The above changes will be required to support IE in Production.
+    If we do “ng build –prod”. 
+    Then go to “cd .\dist\<project-name \
+    “npx local-web-server”
 
-## Further help
+	Our application will run.  
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    But if we want to run our application locally then some additional steps need to be taken care of.
+
+6.	Open up “tsconfig.json” file.
+
+    Change 
+    "target": "es2015",
+    To
+    "target": "es5",
+
+    Save the changes and run “ng s”.
+
+    We are good to go. 
+
+
+
